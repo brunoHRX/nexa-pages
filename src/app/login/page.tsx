@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Link from "next/link"
+import Link from "next/link" 
 import { Label } from "../../components/ui/labelEffect";
 import { Input } from "../../components/ui/inputEffect";
 import { cn } from "../../lib/utils";
@@ -11,11 +11,36 @@ import {
   IconBrandGoogle,
 } from "@tabler/icons-react";
 
+
+
+const apiUrl= process.env.NEXT_PUBLIC_API_URL;
+
 export default function Login() {
 
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    try {
+      const response = await fetch( apiUrl.toString(), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', 
+        },
+        mode: 'no-cors', // Usa o formData modificado
+      });
+  
+      if (response) {
+        // Sucesso
+        console.log("Dados enviados com sucesso.");
+      } else {
+        // Tratamento de respostas não bem-sucedidas
+        console.error("Falha ao enviar dados.");
+      }
+    } catch (error) {
+      // Tratamento de erro de rede ou de envio
+      console.error("Erro ao enviar o formulário:", error);
+    } finally {
+    }
     console.log("Form submitted");
   };
 

@@ -27,7 +27,7 @@ export default function Home() {
         </p>
         <TypewriterEffectSmooth words={words} />
         <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4  ">
-          <Link href="/signup" passHref>
+          <Link href="/login" passHref>
             <div className="w-40 h-11 text-center px-8 py-2 rounded-md font-bold bg-black border dark:border-white border-transparent text-white ">
               Acesse
             </div>
